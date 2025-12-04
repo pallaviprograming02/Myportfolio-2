@@ -39,48 +39,10 @@ window.onscroll = () => {
     header.classList.toggle('sticky', window.scrollY > 100);
 };
 
-// Scroll Reveal Animation
-const observer = new IntersectionObserver((entries) => {
-    entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-            entry.target.classList.add('show');
-        } else {
-            entry.target.classList.remove('show');
-        }
-    });
-});
+// Scroll reveal animation disabled - all content visible
 
-const hiddenElements = document.querySelectorAll('.hidden');
-hiddenElements.forEach((el) => observer.observe(el));
-
-// Typing Effect (Simple implementation)
+// Typing effect disabled - showing static text only
 const text = document.querySelector('.typing-text span');
-const words = ["Web Developer", "Designer", "Freelancer"];
-let wordIndex = 0;
-let charIndex = 0;
-let isDeleting = false;
-
-const typeEffect = () => {
-    const currentWord = words[wordIndex];
-    const currentChar = currentWord.substring(0, charIndex);
-    text.textContent = currentWord.substring(0, charIndex);
-
-    if (!isDeleting && charIndex < currentWord.length) {
-        charIndex++;
-        setTimeout(typeEffect, 100);
-    } else if (isDeleting && charIndex > 0) {
-        charIndex--;
-        setTimeout(typeEffect, 50);
-    } else {
-        isDeleting = !isDeleting;
-        if (!isDeleting) {
-            wordIndex = !isDeleting ? (wordIndex + 1) % words.length : wordIndex;
-        }
-        setTimeout(typeEffect, 1000);
-    }
-}
-
-// Initialize typing effect if element exists
 if (text) {
-    typeEffect();
+    text.textContent = 'Web Developer';
 }
